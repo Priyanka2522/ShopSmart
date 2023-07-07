@@ -44,7 +44,7 @@ const fetchData = async () => {
                
                  <img src={`data:image/png;base64,${item.product_image}`} className="product-cart-image"/>
                  <div className="sub-cart">
-                 <h5><label>Name: </label> {item.product_name}</h5>
+                 <h5><label>Name: </label></h5><p>{item.product_name}</p>
                  <h5><label>Cost: </label><CurrencyRupeeIcon fontSize="small"/> {item.product_price}</h5>
                   <h5><label>Description: </label> {item.product_description}</h5>
                   <h5><label>Quantity: </label> {item.product_quantity}</h5>
