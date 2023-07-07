@@ -1,0 +1,36 @@
+.cart{
+    display:flex;
+    vertical-align:middle;
+    margin: 10px;
+    padding: 22px;
+    width: 50rem;
+    line-height: 1;
+    box-shadow: 1px 3px 11px 1px rgba(17, 17, 17, 0.3);
+  }
+  .sub-cart{
+    display:grid;
+    vertical-align:middle;
+    margin: 10px;
+    padding: 22px;
+    width: 18rem;
+    line-height: 1;
+    
+  }
+
+  .buyNow-btn{
+    width: 7rem;
+    height: 40px;
+    border: 1px;
+    color: BLACK;
+    font-weight: 700;
+    font-style: bold;
+    background-color: #c9c1c1;
+    box-shadow: 2px 2px 2px #898686;
+    margin-right: 10px;
+    display: flex;
+    float:end;
+  }
+  .product-cart-image{
+    width: 350px;
+    height: 350px;
+  }
