@@ -34,3 +34,8 @@
     width: 350px;
     height: 350px;
   }
+  .product_label{
+    font-size: 20px;
+    font-weight: 1000px;
+    color: black;
+  }

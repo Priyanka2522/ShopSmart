@@ -44,12 +44,13 @@ const fetchData = async () => {
                
                  <img src={`data:image/png;base64,${item.product_image}`} className="product-cart-image"/>
                  <div className="sub-cart">
-                 <h5><label>Name: </label></h5><p>{item.product_name}</p>
-                 <h5><label>Cost: </label><CurrencyRupeeIcon fontSize="small"/> {item.product_price}</h5>
-                  <h5><label>Description: </label> {item.product_description}</h5>
-                  <h5><label>Quantity: </label> {item.product_quantity}</h5>
-                  <h5> <label>Type: </label> {item.product_type}</h5>
-                  <h5><label>Category: </label> {item.product_category}</h5>
+                    <div style={{display:"fl"}}>
+                    <label className="product_label">Name: </label> <p>  {item.product_name}</p></div>
+                    <label className="product_label">Cost: </label><CurrencyRupeeIcon fontSize="small"/><p>{item.product_price}</p>{item.product_price}
+                    <label className="product_label">Description: </label><p>{item.product_description}</p> 
+                    <label className="product_label">Quantity: </label> <p>{item.product_quantity}</p>
+                    <label className="product_label">Type: </label> <p>{item.product_type}</p>
+                    <label className="product_label">Category: </label> <p>{item.product_category}</p>
                   
 
                   <button className=" btn buyNow-btn" onClick={handleGoToCart}>Go To Cart</button>
