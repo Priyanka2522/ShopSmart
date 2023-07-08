@@ -29,7 +29,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
+           
             const result = await fetch("http://192.168.0.48:8000/shopsmart/signin/", {
                 method: 'post',
                 body: JSON.stringify({ user_gmail, user_password }),
@@ -37,7 +37,6 @@ const Login = () => {
                     'Content-Type': 'application/json'
                 }
             });
-            navigate('/home');
             console.log(result);
        
 

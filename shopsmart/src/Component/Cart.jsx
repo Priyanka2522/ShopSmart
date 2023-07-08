@@ -35,7 +35,7 @@ const fetchData = async () => {
     <div>
       <Navbar></Navbar>
 
-      <h1 style={{display:"flex", justifyContent:"center", marginTop:"20px" , color:"red"}}> Product List</h1>
+      <h1 style={{display:"flex", justifyContent:"center", marginTop:"20px"}}>Cart List</h1>
 
       {Array.isArray(products) ? (
         <ul>
@@ -45,17 +45,23 @@ const fetchData = async () => {
                  <img src={`data:image/png;base64,${item.product_image}`} className="product-cart-image"/>
                  <div className="sub-cart">
                     <div style={{display:"fl"}}>
-                    <label className="product_label">Name: </label> <p>  {item.product_name}</p></div>
-                    <label className="product_label">Cost: </label><CurrencyRupeeIcon fontSize="small"/><p>{item.product_price}</p>{item.product_price}
-                    <label className="product_label">Description: </label><p>{item.product_description}</p> 
-                    <label className="product_label">Quantity: </label> <p>{item.product_quantity}</p>
-                    <label className="product_label">Type: </label> <p>{item.product_type}</p>
-                    <label className="product_label">Category: </label> <p>{item.product_category}</p>
+                    <label className="product_label">Name: </label> 
+                    <p className="product-info">  {item.product_name}</p></div>
+                    <label className="product_label">Cost: </label>
+                    <p className="product-info"><CurrencyRupeeIcon fontSize="small"/>{item.product_price}</p>
+                    <label className="product_label">Description: </label>
+                    <p className="product-info">{item.product_description}</p> 
+                    <label className="product_label">Quantity: </label>
+                     <p className="product-info">{item.product_quantity}</p>
+                    <label className="product_label">Type: </label> 
+                    <p className="product-info">{item.product_type}</p>
+                    <label className="product_label">Category: </label> 
+                    <p className="product-info">{item.product_category}</p>
                   
-
-                  <button className=" btn buyNow-btn" onClick={handleGoToCart}>Go To Cart</button>
-                  <button className=" btn buyNow-btn" >Buy Now</button>
-                 
+                  <div className="btns">
+                  <button className=" btn buyNow-btn" onClick={handleGoToCart}>Buy Now</button>
+                  <button className=" btn buyNow-btn" >Remove</button>
+                  </div>
                   </div>
               </div>
           ))}
