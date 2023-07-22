@@ -1,0 +1,13 @@
+.error{
+    color: red;
+    font-size: 14px;
+    /* text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center; */
+}
+.scrollbar{
+    width: '100px';
+    height: '90px';
+    overflow: 'scroll';
+  }
