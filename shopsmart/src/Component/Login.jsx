@@ -1,19 +1,16 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-
-
 import axios from 'axios';
 import { useState } from "react";
 import Home from "./Home";
 import Navbar from "./Navbar";
 import {useNavigate}from 'react-router-dom';
+
 // import '../Component/Login.css';
 
 
@@ -21,36 +18,46 @@ const Login = () => {
 
     const [user_gmail, setUserEmail] = useState('');
     const [user_password, setUserPassword] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState(false);
     const navigate = useNavigate();
-
-
-
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-           
-            const result = await fetch("http://192.168.0.48:8000/shopsmart/signin/", {
+
+
+        if(user_gmail==='' && user_password==='')
+        {
+            setError(true)
+            return;
+        }
+        
+        try
+        {
+            const result = await fetch("http://192.168.0.48:5000/shopsmart/signin/", {
                 method: 'post',
                 body: JSON.stringify({ user_gmail, user_password }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
+
+            if (result.ok) {
+               alert("Successful");
+               navigate('/products');
+              } else {
+                setError('Invalid Username and Password');
+              }
+             
             console.log(result);
+        }catch(error)
+        {
+            setError("An error occured.Please try again.");
+        }
+        
        
-
-
-
-
-
-
-        // const data = new FormData(event.currentTarget);
-        // console.log({
-        //     email: data.get("email"),
-        //     password: data.get("password"),
-        // });
     };
+
+
 
     return (
         <> 
@@ -82,10 +89,11 @@ const Login = () => {
                         label="Email Address"
                         name="email"
                         value={user_gmail}
-                        onChange={(e) => setUserEmail(e.target.value)}
+                        onChange={(e) => {setUserEmail(e.target.value);setError(false);}}
                         autoComplete="email"
                         autoFocus
                     />
+                     {error && user_gmail.length <=0 ?<p style={{ color: "red", marginLeft: "16px" }}>Please enter Username</p>:""}
                     <TextField
                         margin="normal"
                         size="small"
@@ -96,9 +104,10 @@ const Login = () => {
                         type="password"
                         id="password"
                         value={user_password}
-                        onChange={(e) => setUserPassword(e.target.value)}
+                        onChange={(e) => {setUserPassword(e.target.value);setError(false);}}
                         autoComplete="current-password"
                     />
+                     {error && user_password.length <=0 ? <p style={{ color: "red", marginLeft: "16px" }}>Please enter Password</p>:""}
 
                     <Button
                         type="submit"
@@ -108,12 +117,11 @@ const Login = () => {
                     >
                         Sign In
                     </Button>
-
                     {error && <p style={{ color: "red", marginLeft: "16px" }}>{error}</p>}
 
                     <Grid container>
                         <Grid item sx={{ ml: 5 }}>
-                            <Link href="#" variant="body2">
+                            <Link href="/register" variant="body2">
                                 {"Don't have an account? Sign Up"}
                             </Link>
                         </Grid>

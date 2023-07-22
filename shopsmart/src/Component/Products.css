@@ -85,3 +85,6 @@
     border: 1px;
     background-color: #fff;
   }
+  .scrollbar{
+    overflow: 'scroll';
+  }
